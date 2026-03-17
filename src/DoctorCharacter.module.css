@@ -1,0 +1,55 @@
+/* ── Character wrapper ─────────────────────────────────────────────────── */
+.wrap {
+  flex-shrink: 0;
+  width: 100px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.15s ease;
+}
+
+/* ── Chuckle animation ─────────────────────────────────────────────────── */
+.chuckle {
+  animation: chuckle 0.6s ease;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes chuckle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  15% {
+    transform: rotate(-3deg) scale(1.04);
+  }
+  30% {
+    transform: rotate(3deg) scale(1.06);
+  }
+  45% {
+    transform: rotate(-2deg) scale(1.04);
+  }
+  60% {
+    transform: rotate(2deg) scale(1.02);
+  }
+  75% {
+    transform: rotate(-1deg) scale(1.01);
+  }
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .wrap {
+    width: 80px;
+  }
+}

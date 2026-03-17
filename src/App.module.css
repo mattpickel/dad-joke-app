@@ -1,0 +1,233 @@
+/* ── Page layout ───────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+}
+
+.brand {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Scene (character + bubble) ────────────────────────────────────────── */
+.scene {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* ── Speech bubble ─────────────────────────────────────────────────────── */
+.bubbleWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bubble {
+  background: #f0f4f8;
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Tail pointing toward character */
+.bubble::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 24px;
+  border: 8px solid transparent;
+  border-right-color: #f0f4f8;
+  border-left: 0;
+}
+
+.bubbleVisible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.setup {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.punchline {
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.punchlineVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Groan meter ───────────────────────────────────────────────────────── */
+.groanRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  min-height: 1.4em;
+}
+
+.groanLabel {
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.groanIcons {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  letter-spacing: 2px;
+}
+
+.groanVisible {
+  opacity: 1;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────── */
+.btnRow {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.65rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btnReveal {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btnNext {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* ── Progress bar ──────────────────────────────────────────────────────── */
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.track {
+  flex: 1;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 4px;
+  transition: width 0.35s ease;
+}
+
+.progressLabel {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────── */
+.footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .scene {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bubble::before {
+    display: none;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+}

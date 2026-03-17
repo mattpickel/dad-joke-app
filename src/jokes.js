@@ -1,0 +1,30 @@
+// groans: 1–5 (how bad is the pun?)
+const JOKES = [
+  { setup: "Why don't scientists trust atoms?",                                    punchline: "Because they make up everything!",                       groans: 3 },
+  { setup: "I told my wife she was drawing her eyebrows too high.",                punchline: "She looked surprised.",                                  groans: 4 },
+  { setup: "Why did the scarecrow win an award?",                                  punchline: "Because he was outstanding in his field!",               groans: 3 },
+  { setup: "What do you call cheese that isn't yours?",                            punchline: "Nacho cheese!",                                          groans: 2 },
+  { setup: "I'm reading a book about anti-gravity.",                               punchline: "It's impossible to put down!",                           groans: 4 },
+  { setup: "What do you call a fish without eyes?",                                punchline: "A fsh.",                                                 groans: 5 },
+  { setup: "Why can't you give Elsa a balloon?",                                   punchline: "Because she'll let it go.",                              groans: 4 },
+  { setup: "I only know 25 letters of the alphabet.",                              punchline: "I don't know why.",                                      groans: 4 },
+  { setup: "Why do cows wear bells?",                                              punchline: "Because their horns don't work!",                        groans: 3 },
+  { setup: "What do you call a sleeping dinosaur?",                                punchline: "A dino-snore!",                                          groans: 4 },
+  { setup: "What do you call a belt made of watches?",                             punchline: "A waist of time!",                                       groans: 5 },
+  { setup: "I used to hate facial hair…",                                          punchline: "…but then it grew on me.",                               groans: 3 },
+  { setup: "What did the ocean say to the beach?",                                 punchline: "Nothing, it just waved!",                                groans: 3 },
+  { setup: "Why don't skeletons fight each other?",                                punchline: "They don't have the guts!",                              groans: 4 },
+  { setup: "I asked my dog what 2 minus 2 is.",                                    punchline: "He said nothing.",                                       groans: 3 },
+  { setup: "What do you call a factory that makes okay products?",                 punchline: "A satisfactory!",                                        groans: 5 },
+  { setup: "How do you organize a space party?",                                   punchline: "You planet!",                                            groans: 4 },
+  { setup: "Why did the bicycle fall over?",                                       punchline: "It was two-tired!",                                      groans: 3 },
+  { setup: "What time did the man go to the dentist?",                             punchline: "Tooth-hurty!",                                           groans: 5 },
+  { setup: "Why do nurses like red crayons?",                                      punchline: "Sometimes they have to draw blood!",                     groans: 4 },
+  { setup: "What did the doctor say to the sick calendar?",                        punchline: "Your days are numbered!",                                groans: 5 },
+  { setup: "Why did the doctor carry a red pen?",                                  punchline: "In case they needed to draw blood!",                     groans: 4 },
+  { setup: "Why do pediatricians make great comedians?",                           punchline: "Because they always keep their patients laughing!",      groans: 3 },
+  { setup: "What's the best medicine in the world?",                               punchline: "Laughter… but don't tell your insurance company.",       groans: 4 },
+  { setup: "What did the stethoscope say to the doctor?",                          punchline: "Stop listening to me — you're being too heart-y!",       groans: 5 },
+]
+
+export default JOKES
