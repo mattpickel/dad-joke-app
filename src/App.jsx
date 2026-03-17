@@ -32,7 +32,6 @@ export default function App() {
   const chuckleTimer = useRef(null)
 
   const current = index >= 0 ? deck[index] : null
-  const seen    = index + 1  // 0 before first joke
 
   // ── Change topic ─────────────────────────────────────────────────────────
   const changeTopic = useCallback((topic) => {
@@ -76,7 +75,6 @@ export default function App() {
   }, [revealed])
 
   const isLast     = index >= total - 1
-  const progress   = seen / total
 
   return (
     <div className={styles.page}>
@@ -160,14 +158,6 @@ export default function App() {
               ? '🔁 Shuffle & Restart'
               : '⏭ Next Joke'}
           </button>
-        </div>
-
-        {/* ── Progress ───────────────────────────────────────────────── */}
-        <div className={styles.progressRow} aria-label={`${seen} of ${total} jokes`}>
-          <div className={styles.track}>
-            <div className={styles.fill} style={{ width: `${progress * 100}%` }} />
-          </div>
-          <span className={styles.progressLabel}>{seen} / {total}</span>
         </div>
 
       </main>
