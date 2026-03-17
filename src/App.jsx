@@ -81,9 +81,9 @@ export default function App() {
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className={styles.header}>
-        <p className={styles.brand}>Music City Pediatrics · Concierge</p>
+        <p className={styles.brand}>Sumner Pediatric Dentistry</p>
         <h1 className={styles.title}>
-          World-Class <span className={styles.accent}>Dad Jokes</span> 🎸
+          World-Class <span className={styles.accent}>Dad Jokes</span> 🦷
         </h1>
         <p className={styles.subtitle}>Complimentary groan-worthy humor since forever</p>
       </header>
@@ -153,7 +153,7 @@ export default function App() {
           )}
           <button className={`${styles.btn} ${styles.btnNext}`} onClick={nextJoke}>
             {index < 0
-              ? '🎸 Hit Me With a Joke'
+              ? '🦷 Hit Me With a Joke'
               : isLast
               ? '🔁 Shuffle & Restart'
               : '⏭ Next Joke'}
@@ -164,7 +164,7 @@ export default function App() {
 
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className={styles.footer}>
-        Made with ❤️ for&nbsp;<strong>Music City Pediatrics Concierge</strong>
+        Made with ❤️ for&nbsp;<strong>Sumner Pediatric Dentistry</strong>
       </footer>
 
     </div>

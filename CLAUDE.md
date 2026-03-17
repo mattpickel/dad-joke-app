@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Dad Jokes app for Music City Pediatrics Concierge — a static React SPA featuring a cartoon doctor delivering dad jokes with animations.
+Dad Jokes app for Sumner Pediatric Dentistry — a static React SPA featuring a cartoon doctor delivering dad jokes with animations.
 
 ## Commands
 
@@ -25,13 +25,13 @@ No test framework is configured.
 
 ### Key Files
 
-- `jokes.js` — All joke data. Each joke: `{ setup, punchline, groans }` where `groans` is 1–5 severity
+- `jokes.js` — All joke data. Each joke: `{ setup, punchline, groans, topic }` where `groans` is 1–5 severity and `topic` is a lowercase category string
 - `App.jsx` — Main page component with joke cycling logic (Fisher-Yates shuffle), reveal/chuckle state machine
 - `DoctorCharacter.jsx` — SVG placeholder character with float + chuckle animations; designed to be swapped for a real illustration (see swap instructions in file header)
 
 ### State Flow
 
-App maintains a shuffled deck of jokes. User clicks "Next" to advance through the deck; when exhausted it reshuffles. "Reveal" shows the punchline and triggers a chuckle animation on the doctor character. Progress bar tracks position in the current deck.
+App maintains a shuffled deck of jokes, optionally filtered by topic. User clicks "Next" to advance through the deck; when exhausted it reshuffles. "Reveal" shows the punchline and triggers a chuckle animation on the doctor character. Topic pills filter the deck by category.
 
 ## Deployment
 
