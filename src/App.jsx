@@ -1,9 +1,9 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useMemo } from 'react'
 import DoctorCharacter from './DoctorCharacter'
 import JOKES from './jokes'
 import styles from './App.module.css'
 
-const TOTAL = JOKES.length
+const TOPICS = [...new Set(JOKES.map(j => j.topic))].sort()
 
 // Fisher-Yates shuffle so jokes cycle in random order
 function shuffled(arr) {
@@ -16,6 +16,14 @@ function shuffled(arr) {
 }
 
 export default function App() {
+  const [selectedTopic, setSelectedTopic] = useState(null)
+
+  const filtered = useMemo(
+    () => selectedTopic ? JOKES.filter(j => j.topic === selectedTopic) : JOKES,
+    [selectedTopic],
+  )
+  const total = filtered.length
+
   const [deck, setDeck]           = useState(() => shuffled(JOKES))
   const [index, setIndex]         = useState(-1)
   const [revealed, setRevealed]   = useState(false)
@@ -26,6 +34,16 @@ export default function App() {
   const current = index >= 0 ? deck[index] : null
   const seen    = index + 1  // 0 before first joke
 
+  // ── Change topic ─────────────────────────────────────────────────────────
+  const changeTopic = useCallback((topic) => {
+    setSelectedTopic(topic)
+    const pool = topic ? JOKES.filter(j => j.topic === topic) : JOKES
+    setDeck(shuffled(pool))
+    setIndex(-1)
+    setRevealed(false)
+    setEntering(false)
+  }, [])
+
   // ── Next joke ───────────────────────────────────────────────────────────
   const nextJoke = useCallback(() => {
     setRevealed(false)
@@ -34,8 +52,9 @@ export default function App() {
     const nextIndex = index + 1
 
     // Reshuffle when deck is exhausted
-    if (nextIndex >= TOTAL) {
-      setDeck(shuffled(JOKES))
+    if (nextIndex >= total) {
+      const pool = selectedTopic ? JOKES.filter(j => j.topic === selectedTopic) : JOKES
+      setDeck(shuffled(pool))
       setIndex(0)
     } else {
       setIndex(nextIndex)
@@ -43,7 +62,7 @@ export default function App() {
 
     // Trigger bubble entrance animation on next tick
     setTimeout(() => setEntering(true), 30)
-  }, [index])
+  }, [index, total, selectedTopic])
 
   // ── Reveal punchline ─────────────────────────────────────────────────────
   const reveal = useCallback(() => {
@@ -56,8 +75,8 @@ export default function App() {
     chuckleTimer.current = setTimeout(() => setChuckling(false), 600)
   }, [revealed])
 
-  const isLast     = index >= TOTAL - 1
-  const progress   = seen / TOTAL
+  const isLast     = index >= total - 1
+  const progress   = seen / total
 
   return (
     <div className={styles.page}>
@@ -70,6 +89,25 @@ export default function App() {
         </h1>
         <p className={styles.subtitle}>Complimentary groan-worthy humor since forever</p>
       </header>
+
+      {/* ── Topic filter ───────────────────────────────────────────────── */}
+      <div className={styles.filterRow}>
+        <button
+          className={`${styles.pill} ${selectedTopic === null ? styles.pillActive : ''}`}
+          onClick={() => changeTopic(null)}
+        >
+          All
+        </button>
+        {TOPICS.map(t => (
+          <button
+            key={t}
+            className={`${styles.pill} ${selectedTopic === t ? styles.pillActive : ''}`}
+            onClick={() => changeTopic(t)}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
 
       {/* ── Card ───────────────────────────────────────────────────────── */}
       <main className={styles.card}>
@@ -125,11 +163,11 @@ export default function App() {
         </div>
 
         {/* ── Progress ───────────────────────────────────────────────── */}
-        <div className={styles.progressRow} aria-label={`${seen} of ${TOTAL} jokes`}>
+        <div className={styles.progressRow} aria-label={`${seen} of ${total} jokes`}>
           <div className={styles.track}>
             <div className={styles.fill} style={{ width: `${progress * 100}%` }} />
           </div>
-          <span className={styles.progressLabel}>{seen} / {TOTAL}</span>
+          <span className={styles.progressLabel}>{seen} / {total}</span>
         </div>
 
       </main>
