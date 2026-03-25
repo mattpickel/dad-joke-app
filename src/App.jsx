@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useMemo } from 'react'
 import DoctorCharacter from './DoctorCharacter'
 import JOKES from './jokes'
 import styles from './App.module.css'
+import logo from './assets/Sumner Pediatrics logo.png'
 
 const TOPICS = [...new Set(JOKES.map(j => j.topic))].sort()
 
@@ -16,7 +17,7 @@ function shuffled(arr) {
 }
 
 export default function App() {
-  const [selectedTopic, setSelectedTopic] = useState(null)
+  const [selectedTopic, setSelectedTopic] = useState('dental')
 
   const filtered = useMemo(
     () => selectedTopic ? JOKES.filter(j => j.topic === selectedTopic) : JOKES,
@@ -24,7 +25,7 @@ export default function App() {
   )
   const total = filtered.length
 
-  const [deck, setDeck]           = useState(() => shuffled(JOKES))
+  const [deck, setDeck]           = useState(() => shuffled(JOKES.filter(j => j.topic === 'dental')))
   const [index, setIndex]         = useState(-1)
   const [revealed, setRevealed]   = useState(false)
   const [entering, setEntering]   = useState(false)   // bubble transition
@@ -81,7 +82,7 @@ export default function App() {
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className={styles.header}>
-        <p className={styles.brand}>Sumner Pediatric Dentistry</p>
+        <img className={styles.logo} src={logo} alt="Sumner Pediatric Dentistry" />
         <h1 className={styles.title}>
           World-Class <span className={styles.accent}>Dad Jokes</span> 🦷
         </h1>

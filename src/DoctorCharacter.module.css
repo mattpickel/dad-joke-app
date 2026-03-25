@@ -1,7 +1,7 @@
 /* ── Character wrapper ─────────────────────────────────────────────────── */
 .wrap {
   flex-shrink: 0;
-  width: 100px;
+  width: 180px;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -50,6 +50,6 @@
 /* ── Responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .wrap {
-    width: 80px;
+    width: 140px;
   }
 }

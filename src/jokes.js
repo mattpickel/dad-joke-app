@@ -1,5 +1,5 @@
 // groans: 1–5 (how bad is the pun?)
-// topics: animals, food, science, music, sports, medical, kids, wordplay, tech, nature
+// topics: animals, dental, food, science, music, sports, medical, kids, wordplay, tech, nature
 
 const JOKES = [
   // ── ANIMALS ──────────────────────────────────────────────────────────────
@@ -28,7 +28,6 @@ const JOKES = [
   { setup: "What do you call a fake noodle?",                                          punchline: "An impasta!",                                                     groans: 5, topic: "food" },
   { setup: "Why do French people eat snails?",                                         punchline: "Because they don't like fast food!",                              groans: 3, topic: "food" },
   { setup: "What do elves make sandwiches with?",                                      punchline: "Shortbread!",                                                     groans: 4, topic: "food" },
-  { setup: "Why did the pie go to a dentist?",                                         punchline: "Because it needed a filling!",                                    groans: 4, topic: "food" },
 
   // ── SCIENCE ──────────────────────────────────────────────────────────────
   { setup: "Why don't scientists trust atoms?",                                        punchline: "Because they make up everything!",                                groans: 3, topic: "science" },
@@ -93,7 +92,6 @@ const JOKES = [
   { setup: "I used to hate facial hair...",                                             punchline: "...but then it grew on me.",                                      groans: 3, topic: "wordplay" },
   { setup: "What do you call a factory that makes okay products?",                     punchline: "A satisfactory!",                                                 groans: 5, topic: "wordplay" },
   { setup: "How do you organize a space party?",                                       punchline: "You planet!",                                                     groans: 4, topic: "wordplay" },
-  { setup: "What time did the man go to the dentist?",                                 punchline: "Tooth-hurty!",                                                    groans: 5, topic: "wordplay" },
   { setup: "I couldn't figure out why the baseball kept getting bigger.",              punchline: "Then it hit me.",                                                 groans: 4, topic: "wordplay" },
   { setup: "I used to be addicted to soap.",                                           punchline: "But I'm clean now.",                                              groans: 5, topic: "wordplay" },
   { setup: "My wife told me I had to stop acting like a flamingo.",                    punchline: "I had to put my foot down.",                                      groans: 5, topic: "wordplay" },
@@ -124,6 +122,23 @@ const JOKES = [
   { setup: "What do you call dangerous precipitation?",                                punchline: "A rain of terror!",                                               groans: 5, topic: "nature" },
   { setup: "How does the moon cut his hair?",                                          punchline: "Eclipse it!",                                                     groans: 5, topic: "nature" },
   { setup: "Why did the sun go to school?",                                            punchline: "To get a little brighter!",                                       groans: 3, topic: "nature" },
+
+  // ── DENTAL ──────────────────────────────────────────────────────────────
+  { setup: "What time did the man go to the dentist?",                                 punchline: "Tooth-hurty!",                                                    groans: 5, topic: "dental" },
+  { setup: "Why did the pie go to a dentist?",                                         punchline: "Because it needed a filling!",                                    groans: 4, topic: "dental" },
+  { setup: "What does a dentist call their X-rays?",                                   punchline: "Tooth pics!",                                                     groans: 5, topic: "dental" },
+  { setup: "Why did the king go to the dentist?",                                      punchline: "To get his teeth crowned!",                                       groans: 4, topic: "dental" },
+  { setup: "What did the dentist say to the golfer?",                                  punchline: "You have a hole in one!",                                         groans: 5, topic: "dental" },
+  { setup: "Why did the deer need braces?",                                            punchline: "Because he had buck teeth!",                                      groans: 4, topic: "dental" },
+  { setup: "What do you call a dentist who doesn't like tea?",                         punchline: "Denis!",                                                          groans: 5, topic: "dental" },
+  { setup: "What does the dentist of the year get?",                                   punchline: "A little plaque!",                                                groans: 5, topic: "dental" },
+  { setup: "Why did the smartphone go to the dentist?",                                punchline: "It had a Bluetooth problem!",                                     groans: 4, topic: "dental" },
+  { setup: "What do dentists call their patients' X-ray appointment?",                 punchline: "A tooth-orial!",                                                  groans: 3, topic: "dental" },
+  { setup: "Why are dentists so good at solving problems?",                            punchline: "They always get to the root of it!",                              groans: 4, topic: "dental" },
+  { setup: "What did the tooth say to the departing dentist?",                         punchline: "Fill me in when you get back!",                                   groans: 4, topic: "dental" },
+  { setup: "Why did the dentist and the orthodontist break up?",                       punchline: "They couldn't align on anything!",                                groans: 5, topic: "dental" },
+  { setup: "What's a dentist's favorite dinosaur?",                                    punchline: "A Flosso-raptor!",                                                groans: 5, topic: "dental" },
+  { setup: "What game do kid dentists love to play?",                                  punchline: "Caps and robbers!",                                               groans: 4, topic: "dental" },
 ]
 
 export default JOKES

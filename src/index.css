@@ -12,18 +12,22 @@
   --color-primary: #408acb;
   --color-accent: #ef7438;
   --color-green: #99c274;
+  --color-green-dark: #699a44;
+  --color-light-blue: #a9d9f5;
   --color-text: #1d3557;
   --color-muted: #6b7280;
   --radius: 16px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --font-heading: 'Just Another Hand', cursive;
+  --font-body: 'Red Hat Display', system-ui, sans-serif;
 }
 
 html {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   background: var(--color-bg);
   color: var(--color-text);
   min-height: 100dvh;
