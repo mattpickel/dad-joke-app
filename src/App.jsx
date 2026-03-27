@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useMemo } from 'react'
-import DoctorCharacter from './DoctorCharacter'
+import DoctorCharacter, { CHARACTERS } from './DoctorCharacter'
 import JOKES from './jokes'
 import styles from './App.module.css'
 import logo from './assets/Sumner Pediatrics logo.png'
@@ -30,6 +30,7 @@ export default function App() {
   const [revealed, setRevealed]   = useState(false)
   const [entering, setEntering]   = useState(false)   // bubble transition
   const [chuckling, setChuckling] = useState(false)
+  const [characterId, setCharacterId] = useState('disney')
   const chuckleTimer = useRef(null)
 
   const current = index >= 0 ? deck[index] : null
@@ -89,25 +90,6 @@ export default function App() {
         <p className={styles.subtitle}>Complimentary groan-worthy humor since forever</p>
       </header>
 
-      {/* ── Topic filter ───────────────────────────────────────────────── */}
-      <div className={styles.filterRow}>
-        <button
-          className={`${styles.pill} ${selectedTopic === null ? styles.pillActive : ''}`}
-          onClick={() => changeTopic(null)}
-        >
-          All
-        </button>
-        {TOPICS.map(t => (
-          <button
-            key={t}
-            className={`${styles.pill} ${selectedTopic === t ? styles.pillActive : ''}`}
-            onClick={() => changeTopic(t)}
-          >
-            {t}
-          </button>
-        ))}
-      </div>
-
       {/* ── Card ───────────────────────────────────────────────────────── */}
       <main className={styles.card}>
 
@@ -115,7 +97,7 @@ export default function App() {
         <div className={styles.scene}>
 
           {/* Character — swap DoctorCharacter internals when ready */}
-          <DoctorCharacter chuckling={chuckling} />
+          <DoctorCharacter chuckling={chuckling} characterId={characterId} />
 
           {/* Speech bubble */}
           <div className={styles.bubbleWrap}>
@@ -162,6 +144,39 @@ export default function App() {
         </div>
 
       </main>
+
+      {/* ── Topic filter ───────────────────────────────────────────────── */}
+      <div className={styles.filterRow}>
+        <button
+          className={`${styles.pill} ${selectedTopic === null ? styles.pillActive : ''}`}
+          onClick={() => changeTopic(null)}
+        >
+          All
+        </button>
+        {TOPICS.map(t => (
+          <button
+            key={t}
+            className={`${styles.pill} ${selectedTopic === t ? styles.pillActive : ''}`}
+            onClick={() => changeTopic(t)}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      {/* ── Character toggle ────────────────────────────────────────────── */}
+      <div className={styles.charToggle}>
+        <span className={styles.charToggleLabel}>Character style:</span>
+        {CHARACTERS.map(c => (
+          <button
+            key={c.id}
+            className={`${styles.charToggleBtn} ${characterId === c.id ? styles.charToggleBtnActive : ''}`}
+            onClick={() => setCharacterId(c.id)}
+          >
+            {c.label}
+          </button>
+        ))}
+      </div>
 
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className={styles.footer}>

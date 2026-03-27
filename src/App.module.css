@@ -212,6 +212,43 @@
 }
 
 
+/* ── Character toggle ──────────────────────────────────────────────────── */
+.charToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.charToggleLabel {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-right: 0.25rem;
+}
+
+.charToggleBtn {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--color-muted);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.charToggleBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.charToggleBtnActive {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
 /* ── Footer ────────────────────────────────────────────────────────────── */
 .footer {
   margin-top: auto;
