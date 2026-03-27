@@ -7,19 +7,22 @@
 }
 
 :root {
-  --color-bg: #f0f4f8;
-  --color-card: #ffffff;
-  --color-primary: #408acb;
-  --color-accent: #ef7438;
-  --color-green: #99c274;
+  --color-bg: #F0F4FA;
+  --color-surface: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-primary: #2AACE2;
+  --color-primary-dark: #1A8FC0;
+  --color-accent: #F97316;
+  --color-green: #4CAF7D;
   --color-green-dark: #699a44;
   --color-light-blue: #a9d9f5;
-  --color-text: #1d3557;
-  --color-muted: #6b7280;
-  --radius: 16px;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  --font-heading: 'Just Another Hand', cursive;
-  --font-body: 'Red Hat Display', system-ui, sans-serif;
+  --color-text: #1A2B3C;
+  --color-muted: #6B7E96;
+  --color-border: #DDE5F0;
+  --radius: 20px;
+  --shadow: 0 8px 32px rgba(26, 43, 60, 0.10);
+  --font-heading: 'Fredoka One', 'Just Another Hand', cursive;
+  --font-body: 'Nunito', 'Red Hat Display', system-ui, sans-serif;
 }
 
 html {

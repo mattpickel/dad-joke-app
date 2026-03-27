@@ -5,6 +5,7 @@ import styles from './App.module.css'
 import logo from './assets/Sumner Pediatrics logo.png'
 
 const TOPICS = [...new Set(JOKES.map(j => j.topic))].sort()
+const GROAN_FACES = ['😐', '😏', '😬', '😖', '🤣']
 
 // Fisher-Yates shuffle so jokes cycle in random order
 function shuffled(arr) {
@@ -34,6 +35,7 @@ export default function App() {
   const chuckleTimer = useRef(null)
 
   const current = index >= 0 ? deck[index] : null
+  const groans = current?.groans ?? 0
 
   // ── Change topic ─────────────────────────────────────────────────────────
   const changeTopic = useCallback((topic) => {
@@ -96,7 +98,6 @@ export default function App() {
         {/* ── Scene ──────────────────────────────────────────────────── */}
         <div className={styles.scene}>
 
-          {/* Character — swap DoctorCharacter internals when ready */}
           <DoctorCharacter chuckling={chuckling} characterId={characterId} />
 
           {/* Speech bubble */}
@@ -119,10 +120,23 @@ export default function App() {
 
             {/* Groan meter */}
             <div className={styles.groanRow} aria-hidden="true">
-              <span className={styles.groanLabel}>Groan meter:</span>
-              <span className={`${styles.groanIcons} ${revealed ? styles.groanVisible : ''}`}>
-                {'😩'.repeat(current?.groans ?? 0)}
-              </span>
+              <span className={styles.groanLabel}>Groan meter</span>
+              <div className={styles.groanMeter}>
+                {GROAN_FACES.map((face, i) => (
+                  <span
+                    key={i}
+                    className={`${styles.groanFace} ${revealed && i < groans ? styles.groanFaceActive : ''}`}
+                  >
+                    {face}
+                  </span>
+                ))}
+              </div>
+              <div className={styles.groanBar}>
+                <div
+                  className={styles.groanFill}
+                  style={{ width: revealed ? `${(groans / 5) * 100}%` : '0%' }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -164,23 +178,25 @@ export default function App() {
         ))}
       </div>
 
-      {/* ── Character toggle ────────────────────────────────────────────── */}
+      {/* ── Character toggle (segmented control) ──────────────────────── */}
       <div className={styles.charToggle}>
-        <span className={styles.charToggleLabel}>Character style:</span>
-        {CHARACTERS.map(c => (
-          <button
-            key={c.id}
-            className={`${styles.charToggleBtn} ${characterId === c.id ? styles.charToggleBtnActive : ''}`}
-            onClick={() => setCharacterId(c.id)}
-          >
-            {c.label}
-          </button>
-        ))}
+        <span className={styles.charToggleLabel}>Character style</span>
+        <div className={styles.segmentedControl}>
+          {CHARACTERS.map(c => (
+            <button
+              key={c.id}
+              className={`${styles.segmentBtn} ${characterId === c.id ? styles.segmentBtnActive : ''}`}
+              onClick={() => setCharacterId(c.id)}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className={styles.footer}>
-        Made with ❤️ for&nbsp;<strong>Sumner Pediatric Dentistry</strong>
+        Made with ❤️ for&nbsp;<a className={styles.footerLink} href="https://sumnerpediatricdentistry.com" target="_blank" rel="noopener noreferrer"><strong>Sumner Pediatric Dentistry</strong></a>
       </footer>
 
     </div>
