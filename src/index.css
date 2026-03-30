@@ -12,7 +12,9 @@
   --color-card: #FFFFFF;
   --color-primary: #2AACE2;
   --color-primary-dark: #1A8FC0;
-  --color-accent: #F97316;
+  --color-accent: #9ACC79;
+  --color-accent-dark: #70A94D;
+  --color-orange: #F97316;
   --color-green: #4CAF7D;
   --color-green-dark: #699a44;
   --color-light-blue: #a9d9f5;
@@ -21,8 +23,8 @@
   --color-border: #DDE5F0;
   --radius: 20px;
   --shadow: 0 8px 32px rgba(26, 43, 60, 0.10);
-  --font-heading: 'Fredoka One', 'Just Another Hand', cursive;
-  --font-body: 'Nunito', 'Red Hat Display', system-ui, sans-serif;
+  --font-heading: 'Just Another Hand', cursive;
+  --font-body: 'Red Hat Display', system-ui, sans-serif;
 }
 
 html {
@@ -31,10 +33,48 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--color-bg);
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-position: 35% 20%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg);
   color: var(--color-text);
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Frosted overlay — cool blue-white tint over warm background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(237, 243, 250, 0.42);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle vignette to focus the eye on center content */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(26, 43, 60, 0.15) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* iOS Safari fix — fixed attachment is buggy */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    background-position: 30% top;
+  }
 }
 
 #root {

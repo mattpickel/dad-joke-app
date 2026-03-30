@@ -1,8 +1,9 @@
 import { useState, useCallback, useRef, useMemo } from 'react'
-import DoctorCharacter, { CHARACTERS } from './DoctorCharacter'
+import DoctorCharacter from './DoctorCharacter'
 import JOKES from './jokes'
 import styles from './App.module.css'
 import logo from './assets/Sumner Pediatrics logo.png'
+import toothGuy from './assets/toothguy.png'
 
 const TOPICS = [...new Set(JOKES.map(j => j.topic))].sort()
 const GROAN_FACES = ['😐', '😏', '😬', '😖', '🤣']
@@ -31,7 +32,6 @@ export default function App() {
   const [revealed, setRevealed]   = useState(false)
   const [entering, setEntering]   = useState(false)   // bubble transition
   const [chuckling, setChuckling] = useState(false)
-  const [characterId, setCharacterId] = useState('disney')
   const chuckleTimer = useRef(null)
 
   const current = index >= 0 ? deck[index] : null
@@ -83,22 +83,24 @@ export default function App() {
   return (
     <div className={styles.page}>
 
-      {/* ── Header ─────────────────────────────────────────────────────── */}
-      <header className={styles.header}>
-        <img className={styles.logo} src={logo} alt="Sumner Pediatric Dentistry" />
-        <h1 className={styles.title}>
-          World-Class <span className={styles.accent}>Dad Jokes</span> 🦷
-        </h1>
-        <p className={styles.subtitle}>Complimentary groan-worthy humor since forever</p>
-      </header>
-
       {/* ── Card ───────────────────────────────────────────────────────── */}
       <main className={styles.card}>
+
+        {/* ── Header ──────────────────────────────────────────────────── */}
+        <header className={styles.header}>
+          <a href="https://sumner.kids/" target="_blank" rel="noopener noreferrer">
+            <img className={styles.logo} src={logo} alt="Sumner Pediatric Dentistry" />
+          </a>
+          <h1 className={styles.title}>
+            World-Class <span className={styles.accent}>Dad Jokes</span> <img className={styles.toothIcon} src={toothGuy} alt="tooth character" />
+          </h1>
+          <p className={styles.subtitle}>Complimentary groan-worthy humor since forever</p>
+        </header>
 
         {/* ── Scene ──────────────────────────────────────────────────── */}
         <div className={styles.scene}>
 
-          <DoctorCharacter chuckling={chuckling} characterId={characterId} />
+          <DoctorCharacter chuckling={chuckling} />
 
           {/* Speech bubble */}
           <div className={styles.bubbleWrap}>
@@ -178,25 +180,9 @@ export default function App() {
         ))}
       </div>
 
-      {/* ── Character toggle (segmented control) ──────────────────────── */}
-      <div className={styles.charToggle}>
-        <span className={styles.charToggleLabel}>Character style</span>
-        <div className={styles.segmentedControl}>
-          {CHARACTERS.map(c => (
-            <button
-              key={c.id}
-              className={`${styles.segmentBtn} ${characterId === c.id ? styles.segmentBtnActive : ''}`}
-              onClick={() => setCharacterId(c.id)}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className={styles.footer}>
-        Made with ❤️ for&nbsp;<a className={styles.footerLink} href="https://sumnerpediatricdentistry.com" target="_blank" rel="noopener noreferrer"><strong>Sumner Pediatric Dentistry</strong></a>
+        Made with ❤️ for&nbsp;<a className={styles.footerLink} href="https://sumner.kids/" target="_blank" rel="noopener noreferrer"><strong>Sumner Pediatric Dentistry</strong></a>
       </footer>
 
     </div>
