@@ -94,7 +94,7 @@ export default function App() {
           <h1 className={styles.title}>
             World-Class <span className={styles.accent}>Dad Jokes</span> <img className={styles.toothIcon} src={toothGuy} alt="tooth character" />
           </h1>
-          <p className={styles.subtitle}>Complimentary groan-worthy humor since forever</p>
+          <p className={styles.subtitle}>Groan-worthy humor since forever</p>
         </header>
 
         {/* ── Scene ──────────────────────────────────────────────────── */}
@@ -182,7 +182,7 @@ export default function App() {
 
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className={styles.footer}>
-        Made with ❤️ for&nbsp;<a className={styles.footerLink} href="https://sumner.kids/" target="_blank" rel="noopener noreferrer"><strong>Sumner Pediatric Dentistry</strong></a>
+        Made with ❤️ for&nbsp;<a className={styles.footerLink} href="https://sumner.kids/" target="_blank" rel="noopener noreferrer"><strong>Sumner Pediatric Dentistry</strong></a>&nbsp;by&nbsp;<a className={styles.footerLinkGcm} href="https://goodcirclemarketing.com" target="_blank" rel="noopener noreferrer"><strong>Good Circle Marketing</strong></a>
       </footer>
 
     </div>
