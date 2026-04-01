@@ -52,7 +52,7 @@
 /* ── Responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .wrap {
-    width: 180px;
-    margin-top: -20px;
+    width: 120px;
+    margin-top: -10px;
   }
 }
