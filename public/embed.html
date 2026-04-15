@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dad Jokes — Embed Instructions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; color: #1A2B3C; }
+    h1 { color: #2AACE2; }
+    pre { background: #F0F4FA; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .demo { margin: 2rem 0; border: 1px dashed #DDE5F0; border-radius: 8px; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Embedding the Dad Jokes app</h1>
+  <p>Paste this snippet anywhere on your site. The iframe auto-resizes to fit content.</p>
+
+  <pre><code>&lt;iframe
+  id="dadjokes-frame"
+  src="https://YOUR-DEPLOYED-URL/"
+  style="width:100%;border:0;display:block;"
+  title="Dad Jokes"
+  loading="lazy"
+&gt;&lt;/iframe&gt;
+&lt;script&gt;
+  window.addEventListener('message', function (e) {
+    if (e.data &amp;&amp; e.data.type === 'dadjokes:height') {
+      var f = document.getElementById('dadjokes-frame');
+      if (f) f.style.height = e.data.height + 'px';
+    }
+  });
+&lt;/script&gt;</code></pre>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>Replace <code>YOUR-DEPLOYED-URL</code> with the live deployment (e.g. <code>https://dadjokes.sumner.kids</code>).</li>
+    <li>The iframe sends its content height to the parent page via <code>postMessage</code>. The script above resizes it to match — so there's no scrollbar inside the iframe.</li>
+    <li>If you want a fixed height instead of auto-resize, drop the <code>&lt;script&gt;</code> block and set <code>height: 800px</code> (or whatever you prefer) on the iframe style.</li>
+    <li>For stricter security, replace the <code>'*'</code> origin check in the snippet with your deployed origin.</li>
+  </ul>
+
+  <h2>Live demo</h2>
+  <div class="demo">
+    <iframe
+      id="dadjokes-frame"
+      src="/"
+      style="width:100%;border:0;display:block;"
+      title="Dad Jokes"
+      loading="lazy"
+    ></iframe>
+  </div>
+  <script>
+    window.addEventListener('message', function (e) {
+      if (e.data && e.data.type === 'dadjokes:height') {
+        var f = document.getElementById('dadjokes-frame');
+        if (f) f.style.height = e.data.height + 'px';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -44,6 +44,22 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* When embedded in an iframe, size to content instead of viewport so the
+   parent iframe can auto-resize to fit. */
+html.embedded,
+html.embedded body {
+  min-height: 0;
+  height: auto;
+}
+
+html.embedded #root {
+  min-height: 0;
+}
+
+html.embedded #root > div {
+  min-height: 0 !important;
+}
+
 /* Frosted overlay — cool blue-white tint over warm background */
 body::before {
   content: '';
