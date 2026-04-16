@@ -352,6 +352,18 @@
     align-items: center;
   }
 
+  .groanRow {
+    justify-content: center;
+  }
+
+  .groanStack {
+    align-items: center;
+  }
+
+  .groanBar {
+    width: 100%;
+  }
+
   .bubble::before {
     display: none;
   }
