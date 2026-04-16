@@ -32,10 +32,11 @@ export default function App() {
   const [revealed, setRevealed]   = useState(false)
   const [entering, setEntering]   = useState(false)   // bubble transition
   const [chuckling, setChuckling] = useState(false)
+  const [userRating, setUserRating] = useState(0)
+  const [hoverRating, setHoverRating] = useState(0)
   const chuckleTimer = useRef(null)
 
   const current = index >= 0 ? deck[index] : null
-  const groans = current?.groans ?? 0
 
   // ── Change topic ─────────────────────────────────────────────────────────
   const changeTopic = useCallback((topic) => {
@@ -45,12 +46,16 @@ export default function App() {
     setIndex(-1)
     setRevealed(false)
     setEntering(false)
+    setUserRating(0)
+    setHoverRating(0)
   }, [])
 
   // ── Next joke ───────────────────────────────────────────────────────────
   const nextJoke = useCallback(() => {
     setRevealed(false)
     setEntering(false)
+    setUserRating(0)
+    setHoverRating(0)
 
     const nextIndex = index + 1
 
@@ -120,24 +125,38 @@ export default function App() {
               )}
             </div>
 
-            {/* Groan meter */}
-            <div className={styles.groanRow} aria-hidden="true">
-              <span className={styles.groanLabel}>Groan meter</span>
-              <div className={styles.groanMeter}>
-                {GROAN_FACES.map((face, i) => (
-                  <span
-                    key={i}
-                    className={`${styles.groanFace} ${revealed && i < groans ? styles.groanFaceActive : ''}`}
-                  >
-                    {face}
-                  </span>
-                ))}
-              </div>
-              <div className={styles.groanBar}>
-                <div
-                  className={styles.groanFill}
-                  style={{ width: revealed ? `${(groans / 5) * 100}%` : '0%' }}
-                />
+            {/* Groan meter — user rates the joke after the punchline */}
+            <div className={`${styles.groanRow} ${revealed ? styles.groanRowVisible : ''}`}>
+              <span className={styles.groanLabel}>
+                {userRating ? 'You rated' : revealed ? 'Rate it' : 'Groan meter'}
+              </span>
+              <div className={styles.groanStack}>
+                <div className={styles.groanMeter} onMouseLeave={() => setHoverRating(0)}>
+                  {GROAN_FACES.map((face, i) => {
+                    const value = i + 1
+                    const display = hoverRating || userRating
+                    const active = revealed && value <= display
+                    return (
+                      <button
+                        key={i}
+                        type="button"
+                        className={`${styles.groanFace} ${active ? styles.groanFaceActive : ''} ${revealed ? styles.groanFaceClickable : ''}`}
+                        onClick={() => revealed && setUserRating(value)}
+                        onMouseEnter={() => revealed && setHoverRating(value)}
+                        disabled={!revealed}
+                        aria-label={`Rate ${value} out of 5`}
+                      >
+                        {face}
+                      </button>
+                    )
+                  })}
+                </div>
+                <div className={styles.groanBar}>
+                  <div
+                    className={styles.groanFill}
+                    style={{ width: revealed ? `${((hoverRating || userRating) / 5) * 100}%` : '0%' }}
+                  />
+                </div>
               </div>
             </div>
           </div>
